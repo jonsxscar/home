@@ -8,10 +8,10 @@ import {
 
 const Experience = ({ experiences }) => {
   return (
-    <section className="section">
+    <section className="section bg-dark">
       <Container>
-        <Jumbotron className="bg-white">
-          <h2 className="display-4 mb-5 text-center">
+        <Jumbotron className="bg-dark" id="experience">
+          <h2 className="display-4 mb-5 text-center text-white">
             {experiences.heading}
           </h2>
           <Row>

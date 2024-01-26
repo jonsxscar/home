@@ -3,6 +3,9 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Skeleton from "react-loading-skeleton";
 import axios from "axios";
+import inmuebles from "../../assets/img/Recording 2023-11-01 at 14.00.07.gif";
+import pokemon from "../../assets/img/Recording 2023-11-01 at 14.13.11.gif";
+import ram from "../../assets/img/rickandmorty.png"
 
 const ProjectCard = ({ value }) => {
   const {
@@ -13,12 +16,46 @@ const ProjectCard = ({ value }) => {
     languages_url,
     pushed_at,
   } = value;
+
+  // Lógica condicional para elegir la URL de la imagen
+  let image_url;
+  if (name === "inmuebles360") {
+    image_url = inmuebles;
+  } else if (name === "Pokemon_PI") {
+    image_url = pokemon;
+  } else {
+    image_url = ram;
+  }
+
+  let link_url;
+  if (name === "inmuebles360") {
+    link_url = "https://inmuebles360-deploy.vercel.app/";
+  } else if (name === "Pokemon_PI") {
+    link_url = "https://pokemonfront.vercel.app/";
+  } /* else {
+    link_url = "URL de la imagen predeterminada";
+  } */
+
   return (
     <Col md={6}>
       <Card className="card shadow-lg p-3 mb-5 bg-white rounded">
         <Card.Body>
+          {/* Añade una imagen con un enlace */}
+          <a href={link_url} >
+            <Card.Img
+              src={image_url}
+              alt={name}
+              style={{
+                width: "100%", // Ajusta el tamaño de la imagen según tus necesidades
+                display: "block", // Asegura que la imagen se muestre como un bloque
+                margin: "0 auto", // Establece márgenes automáticos en los lados izquierdo y derecho para centrar la imagen horizontalmente
+              }}
+            />
+          </a>
           <Card.Title as="h5">{name || <Skeleton />} </Card.Title>
-          <Card.Text>{(!description) ? "" : description || <Skeleton count={3} />} </Card.Text>
+          <Card.Text>
+            {!description ? "" : description || <Skeleton count={3} />}{" "}
+          </Card.Text>
           {svn_url ? <CardButtons svn_url={svn_url} /> : <Skeleton count={2} />}
           <hr />
           {languages_url ? (
@@ -27,7 +64,11 @@ const ProjectCard = ({ value }) => {
             <Skeleton count={3} />
           )}
           {value ? (
-            <CardFooter star_count={stargazers_count} repo_url={svn_url} pushed_at={pushed_at} />
+            <CardFooter
+              star_count={stargazers_count}
+              repo_url={svn_url}
+              pushed_at={pushed_at}
+            />
           ) : (
             <Skeleton />
           )}
@@ -46,7 +87,11 @@ const CardButtons = ({ svn_url }) => {
       >
         <i className="fab fa-github" /> Clone Project
       </a>
-      <a href={svn_url} target=" _blank" className="btn btn-outline-secondary mx-2">
+      <a
+        href={svn_url}
+        target=" _blank"
+        className="btn btn-outline-secondary mx-2"
+      >
         <i className="fab fa-github" /> Repo
       </a>
     </div>
@@ -81,20 +126,19 @@ const Language = ({ languages_url, repo_url }) => {
       Languages:{" "}
       {array.length
         ? array.map((language) => (
-          <a
-            key={language}
-            className="card-link"
-            href={repo_url + `/search?l=${language}`}
-            target=" _blank"
-            rel="noopener noreferrer"
-          >
-            <span className="badge bg-light text-dark">
-              {language}:{" "}
-              {Math.trunc((data[language] / total_count) * 1000) / 10} %
-            </span>
-          </a>
-
-        ))
+            <a
+              key={language}
+              className="card-link"
+              href={repo_url + `/search?l=${language}`}
+              target=" _blank"
+              rel="noopener noreferrer"
+            >
+              <span className="badge bg-light text-dark">
+                {language}:{" "}
+                {Math.trunc((data[language] / total_count) * 1000) / 10} %
+              </span>
+            </a>
+          ))
         : "code yet to be deployed."}
     </div>
   );

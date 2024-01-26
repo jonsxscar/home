@@ -3,7 +3,7 @@ import { useScrollPosition } from "../hooks/useScrollPosition";
 import useResizeObserver from "../hooks/useResizeObserver";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { mainBody, repos, about, skills } from "../editable-stuff/config.js";
+import { mainBody, repos, about, skills, experiences } from "../editable-stuff/config.js";
 import { NavLink } from "./home/migration";
 
 const Navigation = React.forwardRef((props, ref) => {
@@ -38,7 +38,8 @@ const Navigation = React.forwardRef((props, ref) => {
         }`}
       expand="lg"
     >
-      <Navbar.Brand className="navbar-brand" href={process.env.PUBLIC_URL + "/#home"}>
+  
+      <Navbar.Brand className= {isTop ? "text-white" : "text-black"} href={process.env.PUBLIC_URL + "/#home"}>
         {`<${mainBody.firstName} />`}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggler" />
@@ -51,14 +52,14 @@ const Navigation = React.forwardRef((props, ref) => {
           } */}
           {repos.show && (
 
-            <NavLink
+            <NavLink className= {isTop ? "text-white" : "text-dark"} 
               href={process.env.PUBLIC_URL + "/#projects"}
             >
               Projects
             </NavLink>
           )}
-          <NavLink
-            className="nav-item lead"
+          <NavLink 
+            className={`nav-item lead ${isTop ? "text-white" : "text-dark"} `}
             href={about.resume}
             target="_blank"
             rel="noreferrer noopener"
@@ -67,7 +68,7 @@ const Navigation = React.forwardRef((props, ref) => {
           </NavLink>
           {about.show && (
             <NavLink
-              className="nav-item lead"
+              className={`nav-item lead ${isTop ? "text-white" : "text-dark"} `}
               href={process.env.PUBLIC_URL + "/#aboutme"}
             >
               About
@@ -75,10 +76,18 @@ const Navigation = React.forwardRef((props, ref) => {
           )}
           {skills.show && (
             <NavLink
-              className="nav-item lead"
+              className={`nav-item lead ${isTop ? "text-white" : "text-dark"} `}
               href={process.env.PUBLIC_URL + "/#skills"}
             >
               Skills
+            </NavLink>
+          )}
+          {experiences.show && (
+            <NavLink
+              className={`nav-item lead ${isTop ? "text-white" : "text-dark"} `}
+              href={process.env.PUBLIC_URL + "/#experience"}
+            >
+              Education
             </NavLink>
           )}
         </Nav>

@@ -128,4 +128,23 @@ code {
   & > * {
     animation: progress 1.5s ease-in-out forwards;
   }
+  background-color: #373a3d;
+}
+
+/* Cambiar el color de la barra de desplazamiento en navegadores WebKit */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+  background: #212529; /* Color del fondo de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e9ecef; /* Color de la barra de desplazamiento en sí */
+  border-radius: 6px; /* Radio de los bordes de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #959697; /* Cambiar el color de la barra de desplazamiento cuando se pasa el puntero sobre ella */
 }
