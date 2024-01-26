@@ -55,7 +55,7 @@ const about = {
   imageSize: 375,
   message:
     "My name is Jonnathan Scarpetta. Passionate about technology, science, and innovation. I am a highly adaptable and versatile individual who can perform effectively both in team settings and independently. I have received training as a full-stack developer. I am enthusiastic about contributing to and growing in the field of technology, and I am eager to take on new challenges that will enable me to continue my professional development.",
-  resume: "https://drive.google.com/file/d/1NfdG4QjaDZSxemOLoRIYlKG0JCPxYZAS/view?usp=sharing",
+  resume: "https://drive.google.com/file/d/1CYcm53U_fjLAKMOy3_vtPDer3oRfSgOF/view?usp=sharing",
 };
 
 // PROJECTS SECTION
